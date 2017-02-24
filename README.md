@@ -77,3 +77,21 @@ tableView.fd_debugLogEnabled = true
 ** FDTemplateLayoutCell ** hit cache by index path[0, 22] - 299.0
 ** FDTemplateLayoutCell ** hit cache by index path[0, 23] - 176.5
 ```
+
+## About self-satisfied cell
+
+a fully **self-satisfied** cell is constrainted by auto layout and each edge("top", "left", "bottom", "right") has at least one layout constraint against it. It's the same concept introduced as "self-sizing cell" in iOS8 using auto layout.
+
+A bad one :( - missing right and bottom
+![non-self-satisfied](https://github.com/forkingdog/UITableView-FDTemplateLayoutCell/blob/master/Sceenshots/screenshot0.png)   
+
+A good one :)  
+![self-satisfied](https://github.com/forkingdog/UITableView-FDTemplateLayoutCell/blob/master/Sceenshots/screenshot1.png)   
+
+## Notes
+
+A template layout cell is created by `dequeueReusableCell(withIdentifier: <#T##String#>)` method, it means that you MUST have registered this cell reuse identifier by one of:  
+
+- A prototype cell of UITableView in storyboard.
+- Use `register(<#T##nib: UINib?##UINib?#>, forCellReuseIdentifier: <#T##String#>)` 
+- Use `register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellReuseIdentifier: <#T##String#>)`
