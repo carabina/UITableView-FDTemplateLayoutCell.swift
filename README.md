@@ -55,3 +55,25 @@ cell.fd_usingFrameLayout = false
         return CGSize(width: size.width, height: h1 + h2 + ... + hn)
     }
 ```
+
+# Debug log
+Debug log helps to debug or inspect what is this "FDTemplateLayoutCell.swift" extention doing, turning on to print logs when "calculating", "precaching" or "hitting cache".Default to "false", log by "print".
+
+```swift
+tableView.fd_debugLogEnabled = true
+```
+###### It will print like this:
+```
+** FDTemplateLayoutCell ** hit cache by index path[0, 17] - 123.5
+** FDTemplateLayoutCell ** hit cache by index path[0, 18] - 237.5
+** FDTemplateLayoutCell ** hit cache by index path[0, 18] - 237.5
+** FDTemplateLayoutCell ** hit cache by index path[0, 19] - 159.5
+** FDTemplateLayoutCell ** hit cache by index path[0, 19] - 159.5
+** FDTemplateLayoutCell ** hit cache by index path[0, 20] - 262.0
+** FDTemplateLayoutCell ** hit cache by index path[0, 20] - 262.0
+** FDTemplateLayoutCell ** hit cache by index path[0, 21] - 288.0
+** FDTemplateLayoutCell ** hit cache by index path[0, 21] - 288.0
+** FDTemplateLayoutCell ** hit cache by index path[0, 22] - 299.0
+** FDTemplateLayoutCell ** hit cache by index path[0, 22] - 299.0
+** FDTemplateLayoutCell ** hit cache by index path[0, 23] - 176.5
+```
