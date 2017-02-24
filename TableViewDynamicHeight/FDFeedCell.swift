@@ -49,7 +49,11 @@ class FDFeedCell: UITableViewCell {
         didSet {
             titleLabel.text = entity?.title
             contentLabel.text = entity?.content
-            contentImageView.image = UIImage(named: entity?.imageName ?? "")
+            contentImageView.image = nil
+            if let imageName = entity?.imageName, !imageName.isEmpty {
+                // FIX CUICatalog: Invalid asset name supplied:
+                contentImageView.image = UIImage(named: imageName)
+            }
             usernameLabel.text = entity?.username
             timeLabel.text = entity?.time
         }

@@ -63,6 +63,8 @@ class ViewController: UITableViewController {
 
         UIApplication.shared.keyWindow?.addSubview(toolBar)
         toolBar.addSubview(actionControl)
+        
+        tableView.fd_debugLogEnabled = true
     }
 
     func buildTestData(then: @escaping() -> ()) {
@@ -106,7 +108,7 @@ class ViewController: UITableViewController {
 
     func configure(cell: UITableViewCell, at indexPath: IndexPath) {
         let cell = cell as? FDFeedCell
-        cell?.fd_enforceFrameLayout = true // Enable to use "-sizeThatFits:"
+        cell?.fd_usingFrameLayout = true // Enable to use "-sizeThatFits:"
         if indexPath.row % 2 == 0 {
             cell?.accessoryType = .disclosureIndicator
         } else {

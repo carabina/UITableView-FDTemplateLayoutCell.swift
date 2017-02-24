@@ -12,7 +12,7 @@ extension UITableView {
         static var debugLogEnabled = "debugLogEnabled"
     }
 
-    var fd_debugLogEnabled: Bool {
+    public var fd_debugLogEnabled: Bool {
         set {
             objc_setAssociatedObject(self, &Keys.debugLogEnabled, newValue, .OBJC_ASSOCIATION_RETAIN)
         }

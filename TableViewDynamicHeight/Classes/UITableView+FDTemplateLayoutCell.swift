@@ -40,7 +40,7 @@ extension UITableView {
         // 4. Use a valid height or default row height (44) if not exist one
 
         var fittingHeight: CGFloat = 0
-        if !cell.fd_enforceFrameLayout && contentViewWidth > 0 {
+        if !cell.fd_usingFrameLayout && contentViewWidth > 0 {
             // Add a hard width constraint to make dynamic content views (like labels) expand vertically instead
             // of growing horizontally, in a flow-layout manner.
             let widthFenceConstraint = NSLayoutConstraint(item: cell.contentView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: contentViewWidth)
@@ -56,7 +56,7 @@ extension UITableView {
             #if DEBUG
                 // Warn if using AutoLayout but get zero height.
                 if cell.contentView.constraints.count > 0 {
-                    if objc_getAssociatedObject(self, &Keys.fd_systemFittingHeightForConfiguratedCell) == nil && !cell.fd_enforceFrameLayout {
+                    if objc_getAssociatedObject(self, &Keys.fd_systemFittingHeightForConfiguratedCell) == nil && !cell.fd_usingFrameLayout {
                         print("[FDTemplateLayoutCell] Warning once only: Cannot get a proper cell height (now 0) from '- systemFittingSize:'(AutoLayout). You should check how constraints are built in cell, making it into 'self-sizing' cell.")
                         objc_setAssociatedObject(self, &Keys.fd_systemFittingHeightForConfiguratedCell, true, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                     }
@@ -251,7 +251,7 @@ extension UITableViewCell {
     ///   }
     /// 
 
-    var fd_isTemplateLayoutCell: Bool {
+    public var fd_isTemplateLayoutCell: Bool {
         set {
             objc_setAssociatedObject(self, &Keys.isTemplateLayoutCell, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
@@ -266,13 +266,13 @@ extension UITableViewCell {
     /// Use this property only when you want to manually control this template layout cell's height
     /// calculation mode, default to NO.
     /// 
-    var fd_enforceFrameLayout: Bool {
+    public var fd_usingFrameLayout: Bool {
         set {
             objc_setAssociatedObject(self, &Keys.enforceFrameLayout, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
 
         get {
-            return objc_getAssociatedObject(self, &Keys.enforceFrameLayout) as? Bool ?? false
+            return objc_getAssociatedObject(self, &Keys.enforceFrameLayout) as? Bool ?? true
         }
     }
 }
