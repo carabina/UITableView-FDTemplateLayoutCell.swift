@@ -93,5 +93,5 @@ A good one :)
 A template layout cell is created by `dequeueReusableCell(withIdentifier: <#T##String#>)` method, it means that you MUST have registered this cell reuse identifier by one of:  
 
 - A prototype cell of UITableView in storyboard.
-- Use `register(<#T##nib: UINib?##UINib?#>, forCellReuseIdentifier: <#T##String#>)` 
-- Use `register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellReuseIdentifier: <#T##String#>)`
+- Use `register(UINib, forCellReuseIdentifier: String)` 
+- Use `register(AnyClass, forCellReuseIdentifier: String)`
