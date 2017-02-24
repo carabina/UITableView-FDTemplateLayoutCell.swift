@@ -37,3 +37,15 @@ override func tableView(_ tableView: UITableView, heightForRowAt indexPath: Inde
         }
   }
 ```
+
+# Frame layout mode
+
+`FDTemplateLayoutCell.swift` offers 2 modes for asking cell's height.
+
+* Auto layout mode using "-systemLayoutSizeFittingSize:"
+* Frame layout mode using "-sizeThatFits:"
+
+You can use this api change mode
+```swift
+cell.fd_usingFrameLayout // Default is true, because use "frame layout" rather than "auto layout".
+```
