@@ -49,3 +49,9 @@ override func tableView(_ tableView: UITableView, heightForRowAt indexPath: Inde
 ```swift
 cell.fd_usingFrameLayout = false
 ```
+**And if you're using frame layout mode, you must override func sizeThatFits(_ size: CGSize) -> CGSize in your customized cell and return content view's height (separator excluded)**
+```swift
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        return CGSize(width: size.width, height: h1 + h2 + ... + hn)
+    }
+```
