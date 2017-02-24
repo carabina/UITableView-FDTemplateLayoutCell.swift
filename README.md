@@ -62,7 +62,7 @@ Debug log helps to debug or inspect what is this "FDTemplateLayoutCell.swift" ex
 ```swift
 tableView.fd_debugLogEnabled = true
 ```
-###### It will print like this:
+**It will print like this:**
 ```
 ** FDTemplateLayoutCell ** hit cache by index path[0, 17] - 123.5
 ** FDTemplateLayoutCell ** hit cache by index path[0, 18] - 237.5
