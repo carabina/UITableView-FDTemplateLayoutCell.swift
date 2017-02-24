@@ -95,3 +95,15 @@ A template layout cell is created by `dequeueReusableCell(withIdentifier: <#T##S
 - A prototype cell of UITableView in storyboard.
 - Use `register(UINib, forCellReuseIdentifier: String)` 
 - Use `register(AnyClass, forCellReuseIdentifier: String)`
+
+# Installation
+* CocoaPods
+```
+pod UITableView-FDTemplateLayoutCell.swift
+```
+
+* Carthage
+
+```
+github "huangboju/UITableView-FDTemplateLayoutCell.swift"
+```
