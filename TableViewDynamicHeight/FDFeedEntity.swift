@@ -15,7 +15,7 @@ struct FDFeedEntity {
     let username: String?
     let time: String?
     let imageName: String?
-    
+
     init(dict: [String: JSON]) {
         identifier = arc4random().description
         title = dict["title"]?.string

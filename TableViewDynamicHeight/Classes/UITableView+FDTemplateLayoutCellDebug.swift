@@ -7,7 +7,7 @@
 //
 
 extension UITableView {
-    
+
     private struct Keys {
         static var debugLogEnabled = "debugLogEnabled"
     }

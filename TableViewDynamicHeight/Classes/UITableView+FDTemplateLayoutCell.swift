@@ -7,7 +7,7 @@
 //
 
 extension UITableView {
-    
+
     private struct Keys {
         static var fd_systemFittingHeightForConfiguratedCell = "fd_systemFittingHeightForConfiguratedCell"
         static var fd_templateCell = "fd_templateCell"
@@ -16,7 +16,7 @@ extension UITableView {
 
     func fd_systemFittingHeightForConfiguratedCell(_ cell: UITableViewCell) -> CGFloat {
         var contentViewWidth = frame.width
-        
+
         if let accessoryView = cell.accessoryView {
             // 16为系统cell左边的空隙
             contentViewWidth -= 16 + accessoryView.frame.width
@@ -38,50 +38,50 @@ extension UITableView {
         // 2. Warning once if step 1 still returns 0 when using AutoLayout
         // 3. Try "- sizeThatFits:" if step 1 returns 0
         // 4. Use a valid height or default row height (44) if not exist one
-        
+
         var fittingHeight: CGFloat = 0
         if !cell.fd_enforceFrameLayout && contentViewWidth > 0 {
             // Add a hard width constraint to make dynamic content views (like labels) expand vertically instead
             // of growing horizontally, in a flow-layout manner.
             let widthFenceConstraint = NSLayoutConstraint(item: cell.contentView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: contentViewWidth)
             cell.contentView.addConstraint(widthFenceConstraint)
-            
+
             // Auto layout engine does its math
             fittingHeight = cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
             cell.contentView.removeConstraint(widthFenceConstraint)
             fd_debugLog("calculate using system fitting size (AutoLayout) -\(fittingHeight)")
         }
-        
+
         if fittingHeight == 0 {
             #if DEBUG
                 // Warn if using AutoLayout but get zero height.
                 if cell.contentView.constraints.count > 0 {
                     if objc_getAssociatedObject(self, &Keys.fd_systemFittingHeightForConfiguratedCell) == nil && !cell.fd_enforceFrameLayout {
-                        print("[FDTemplateLayoutCell] Warning once only: Cannot get a proper cell height (now 0) from '- systemFittingSize:'(AutoLayout). You should check how constraints are built in cell, making it into 'self-sizing' cell.");
+                        print("[FDTemplateLayoutCell] Warning once only: Cannot get a proper cell height (now 0) from '- systemFittingSize:'(AutoLayout). You should check how constraints are built in cell, making it into 'self-sizing' cell.")
                         objc_setAssociatedObject(self, &Keys.fd_systemFittingHeightForConfiguratedCell, true, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                     }
                 }
             #endif
-            
+
             // Try '- sizeThatFits:' for frame layout.
             // Note: fitting height should not include separator view.
-            
+
             fittingHeight = cell.sizeThatFits(CGSize(width: contentViewWidth, height: 0)).height
-            
+
             fd_debugLog("calculate using sizeThatFits - \(fittingHeight)")
         }
-        
+
         // Still zero height after all above.
         if fittingHeight == 0 {
             // Use default row height.
             fittingHeight = 44
         }
-        
+
         // Add 1px extra space for separator line if needed, simulating default UITableViewCell.
         if separatorStyle != .none {
             fittingHeight += 1.0 / UIScreen.main.scale
         }
-        
+
         return fittingHeight
     }
 
@@ -89,9 +89,9 @@ extension UITableView {
 
     /// Access to internal template layout cell for given reuse identifier.
     /// Generally, you don't need to know these template layout cells.
-    ///
+    /// 
     /// @param identifier Reuse identifier for cell which must be registered.
-    ///
+    /// 
     func fd_templateCell(for reuseIdentifier: String) -> UITableViewCell {
         assert(!reuseIdentifier.isEmpty, "Expect a valid identifier - \(reuseIdentifier)")
         var templateCellsByIdentifiers: [String: UITableViewCell]? = objc_getAssociatedObject(self, &Keys.fd_templateCell) as? [String: UITableViewCell]
@@ -115,41 +115,41 @@ extension UITableView {
 
     /// Returns height of cell of type specifed by a reuse identifier and configured
     /// by the configuration block.
-    ///
+    /// 
     /// The cell would be layed out on a fixed-width, vertically expanding basis with
     /// respect to its dynamic content, using auto layout. Thus, it is imperative that
     /// the cell was set up to be self-satisfied, i.e. its content always determines
     /// its height given the width is equal to the tableview's.
-    ///
+    /// 
     /// @param identifier A string identifier for retrieving and maintaining template
     ///        cells with system's "-dequeueReusableCellWithIdentifier:" call.
     /// @param configuration An optional block for configuring and providing content
     ///        to the template cell. The configuration should be minimal for scrolling
     ///        performance yet sufficient for calculating cell's height.
-    ///
+    /// 
     public func fd_heightForCell(with identifier: String, configuration: ((UITableViewCell) -> ())?) -> CGFloat {
         let templateLayoutCell = fd_templateCell(for: identifier)
-        
+
         // Manually calls to ensure consistent behavior with actual cells. (that are displayed on screen)
         templateLayoutCell.prepareForReuse()
-        
+
         if let configuration = configuration {
             configuration(templateLayoutCell)
         }
-        
+
         return fd_systemFittingHeightForConfiguratedCell(templateLayoutCell)
     }
-    
+
     /// This method does what "-fd_heightForCellWithIdentifier:configuration" does, and
     /// calculated height will be cached by its index path, returns a cached height
     /// when needed. Therefore lots of extra height calculations could be saved.
-    ///
+    /// 
     /// No need to worry about invalidating cached heights when data source changes, it
     /// will be done automatically when you call "-reloadData" or any method that triggers
     /// UITableView's reloading.
-    ///
+    /// 
     /// @param indexPath where this cell's height cache belongs.
-    ///
+    /// 
     public func fd_heightForCell(with identifier: String, cacheBy indexPath: IndexPath, configuration: ((UITableViewCell) -> ())?) -> CGFloat {
         // Hit cache
         if fd_indexPathHeightCache.existsHeight(at: indexPath) {
@@ -161,16 +161,16 @@ extension UITableView {
         let height = fd_heightForCell(with: identifier, configuration: configuration)
         fd_indexPathHeightCache.cache(height: height, by: indexPath)
         fd_debugLog("cached by index path\(indexPath) - \(height)")
-        
+
         return height
     }
 
     /// This method caches height by your model entity's identifier.
     /// If your model's changed, call "-invalidateHeightForKey:(id <NSCopying>)key" to
     /// invalidate cache and re-calculate, it's much cheaper and effective than "cacheByIndexPath".
-    ///
+    /// 
     /// @param key model entity's identifier whose data configures a cell.
-    ///
+    /// 
     public func fd_heightForCell(with identifier: String, cacheByKey key: String, configuration: ((UITableViewCell) -> ())?) -> CGFloat {
         // Hit cache
         if fd_keyedHeightCache.existsHeight(for: key) {
@@ -189,19 +189,19 @@ extension UITableView {
 
     public func fd_templateHeaderFooterView(for reuseIdentifier: String) -> UITableViewHeaderFooterView {
         assert(!reuseIdentifier.isEmpty, "Expect a valid identifier - \(reuseIdentifier)")
-        
+
         var templateHeaderFooterViews: [String: UITableViewHeaderFooterView]? = objc_getAssociatedObject(self, &Keys.fd_heightForHeaderFooterView) as? [String: UITableViewHeaderFooterView]
         if templateHeaderFooterViews == nil {
             templateHeaderFooterViews = [:]
             objc_setAssociatedObject(self, &Keys.fd_heightForHeaderFooterView, templateHeaderFooterViews, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
-        
+
         var templateHeaderFooterView = templateHeaderFooterViews![reuseIdentifier]
 
         if templateHeaderFooterView == nil {
             templateHeaderFooterView = dequeueReusableHeaderFooterView(withIdentifier: reuseIdentifier)
             assert(templateHeaderFooterView != nil, "HeaderFooterView must be registered to table view for identifier - \(reuseIdentifier)")
-            
+
             templateHeaderFooterView?.contentView.translatesAutoresizingMaskIntoConstraints = false
             templateHeaderFooterViews?[reuseIdentifier] = templateHeaderFooterView
             fd_debugLog("layout header footer view created - \(reuseIdentifier)")
@@ -211,11 +211,11 @@ extension UITableView {
     }
 
     /// Returns header or footer view's height that registered in table view with reuse identifier.
-    ///
+    /// 
     /// Use it after calling "-[UITableView registerNib/Class:forHeaderFooterViewReuseIdentifier]",
     /// same with "-fd_heightForCellWithIdentifier:configuration:", it will call "-sizeThatFits:" for
     /// subclass of UITableViewHeaderFooterView which is not using Auto Layout.
-    ///
+    /// 
     public func fd_heightForHeaderFooterView(with identifier: String, configuration: ((UIView) -> ())?) -> CGFloat {
         let templateHeaderFooterView = fd_templateHeaderFooterView(for: identifier)
 
@@ -226,22 +226,20 @@ extension UITableView {
         if fittingHeight == 0 {
             fittingHeight = templateHeaderFooterView.sizeThatFits(CGSize(width: frame.width, height: 0)).height
         }
-        
+
         return fittingHeight
     }
 }
 
-
 extension UITableViewCell {
-    
-    
+
     private struct Keys {
         static var isTemplateLayoutCell = "isTemplateLayoutCell"
         static var enforceFrameLayout = "enforceFrameLayout"
     }
 
     // MARK: - FDTemplateLayoutCell
-    
+
     /// Indicate this is a template layout cell for calculation only.
     /// You may need this when there are non-UI side effects when configure a cell.
     /// Like:
@@ -251,7 +249,7 @@ extension UITableViewCell {
     ///           [self notifySomething]; // non-UI side effects
     ///       }
     ///   }
-    ///
+    /// 
 
     var fd_isTemplateLayoutCell: Bool {
         set {
@@ -262,13 +260,12 @@ extension UITableViewCell {
             return objc_getAssociatedObject(self, &Keys.isTemplateLayoutCell) as? Bool ?? false
         }
     }
-    
 
     /// Enable to enforce this template layout cell to use "frame layout" rather than "auto layout",
     /// and will ask cell's height by calling "-sizeThatFits:", so you must override this method.
     /// Use this property only when you want to manually control this template layout cell's height
     /// calculation mode, default to NO.
-    ///
+    /// 
     var fd_enforceFrameLayout: Bool {
         set {
             objc_setAssociatedObject(self, &Keys.enforceFrameLayout, newValue, .OBJC_ASSOCIATION_RETAIN)

@@ -7,14 +7,14 @@
 //
 
 class FDKeyedHeightCache {
-    
+
     private var mutableHeightsByKeyForPortrait: [String: CGFloat] = [:]
     private var mutableHeightsByKeyForLandscape: [String: CGFloat] = [:]
-    
+
     private var mutableHeightsByKeyForCurrentOrientation: [String: CGFloat] {
         return UIDeviceOrientationIsPortrait(UIDevice.current.orientation) ? mutableHeightsByKeyForPortrait : mutableHeightsByKeyForLandscape
     }
-    
+
     func existsHeight(for key: String) -> Bool {
         guard let number = mutableHeightsByKeyForCurrentOrientation[key] else {
             return false
@@ -25,7 +25,7 @@ class FDKeyedHeightCache {
     func cache(_ height: CGFloat, by key: String) {
         if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
             mutableHeightsByKeyForPortrait[key] = height
-        }  else {
+        } else {
             mutableHeightsByKeyForLandscape[key] = height
         }
     }

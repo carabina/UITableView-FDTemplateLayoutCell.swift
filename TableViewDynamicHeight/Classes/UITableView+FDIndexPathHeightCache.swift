@@ -7,15 +7,14 @@
 //
 
 extension UITableView {
-    
+
     // MARK: - FDKeyedHeightCache and FDIndexPathHeightCache
-    
-    
+
     private struct Keys {
         static var keyedHeightCache = "keyedHeightCache"
         static var indexPathHeightCache = "indexPathHeightCache"
     }
-    
+
     var fd_indexPathHeightCache: FDIndexPathHeightCache {
         var cache = objc_getAssociatedObject(self, &Keys.indexPathHeightCache) as? FDIndexPathHeightCache
         if cache == nil {
@@ -24,7 +23,7 @@ extension UITableView {
         }
         return cache!
     }
-    
+
     var fd_keyedHeightCache: FDKeyedHeightCache {
         var cache = objc_getAssociatedObject(self, &Keys.keyedHeightCache) as? FDKeyedHeightCache
         if cache == nil {
@@ -33,17 +32,17 @@ extension UITableView {
         }
         return cache!
     }
-    
-    //MARK: - FDIndexPathHeightCacheInvalidation
-    
+
+    // MARK: - FDIndexPathHeightCacheInvalidation
+
     func fd_reloadDataWithoutInvalidateIndexPathHeightCache() {
         fd_reloadData()
     }
-    
+
     static let _onceToken = UUID().uuidString
-    
+
     open override class func initialize() {
-        
+
         DispatchQueue.once(token: _onceToken) {
             let selectors = [
                 #selector(reloadData),
@@ -56,7 +55,7 @@ extension UITableView {
                 #selector(reloadRows(at:with:)),
                 #selector(moveRow(at:to:))
             ]
-            
+
             for selector in selectors {
                 let swizzledSelector = NSSelectorFromString("fd_" + selector.description)
                 let originalMethod = class_getInstanceMethod(self, selector)
@@ -65,7 +64,7 @@ extension UITableView {
             }
         }
     }
-    
+
     func fd_reloadData() {
         if fd_indexPathHeightCache.automaticallyInvalidateEnabled {
             fd_indexPathHeightCache.enumerateAllOrientations(using: { (heightsBySection) in
@@ -75,10 +74,10 @@ extension UITableView {
         fd_reloadData()
         //    FDPrimaryCall([self fd_reloadData];)
     }
-    
+
     func fd_insertSections(_ sections: IndexSet, with rowAnimation: UITableViewRowAnimation) {
         if fd_indexPathHeightCache.automaticallyInvalidateEnabled {
-            for  section in sections {
+            for section in sections {
                 fd_indexPathHeightCache.buildSectionsIfNeeded(section)
                 fd_indexPathHeightCache.enumerateAllOrientations(using: { (heightsBySection) in
                     heightsBySection.insert([], at: section)
@@ -87,7 +86,7 @@ extension UITableView {
         }
         fd_insertSections(sections, with: rowAnimation)
     }
-    
+
     func fd_deleteSections(_ sections: IndexSet, with rowAnimation: UITableViewRowAnimation) {
         if fd_indexPathHeightCache.automaticallyInvalidateEnabled {
             for section in sections {
@@ -99,7 +98,7 @@ extension UITableView {
             fd_deleteSections(sections, with: rowAnimation)
         }
     }
-    
+
     func fd_reloadSections(_ sections: IndexSet, with rowAnimation: UITableViewRowAnimation) {
         if fd_indexPathHeightCache.automaticallyInvalidateEnabled {
             for section in sections {
@@ -111,7 +110,7 @@ extension UITableView {
         }
         fd_reloadSections(sections, with: rowAnimation)
     }
-    
+
     func fd_moveSection(_ section: Int, toSection newSection: Int) {
         if fd_indexPathHeightCache.automaticallyInvalidateEnabled {
             fd_indexPathHeightCache.buildSectionsIfNeeded(section)
@@ -119,9 +118,9 @@ extension UITableView {
                 swap(&heightsBySection[section], &heightsBySection[newSection])
             })
         }
-        fd_moveSection(section, toSection:newSection)
+        fd_moveSection(section, toSection: newSection)
     }
-    
+
     func fd_insertRows(at indexPaths: [IndexPath], with rowAnimation: UITableViewRowAnimation) {
         if fd_indexPathHeightCache.automaticallyInvalidateEnabled {
             fd_indexPathHeightCache.buildCachesAtIndexPathsIfNeeded(indexPaths)
@@ -133,13 +132,13 @@ extension UITableView {
         }
         fd_insertRows(at: indexPaths, with: rowAnimation)
     }
-    
+
     func fd_deleteRows(at indexPaths: [IndexPath], with rowAnimation: UITableViewRowAnimation) {
         if fd_indexPathHeightCache.automaticallyInvalidateEnabled {
             fd_indexPathHeightCache.buildCachesAtIndexPathsIfNeeded(indexPaths)
-            
+
             var mutableIndexSetsToRemove: [Int: IndexSet] = [:]
-            
+
             for indexPath in indexPaths {
                 var mutableIndexSet = mutableIndexSetsToRemove[indexPath.section]
                 if mutableIndexSet == nil {
@@ -148,18 +147,18 @@ extension UITableView {
                 }
                 mutableIndexSet?.insert(indexPath.row)
             }
-            
+
             for (key, indexSet) in mutableIndexSetsToRemove {
                 fd_indexPathHeightCache.enumerateAllOrientations(using: { (heightsBySection) in
                     heightsBySection[key].remove(at: indexSet)
                 })
             }
-            
+
             fd_deleteRows(at: indexPaths, with: rowAnimation)
             //    FDPrimaryCall([self fd_deleteRowsAtIndexPaths:indexPaths withRowAnimation:animation];);
         }
     }
-    
+
     func fd_reloadRows(at indexPaths: [IndexPath], with rowAnimation: UITableViewRowAnimation) {
         if fd_indexPathHeightCache.automaticallyInvalidateEnabled {
             fd_indexPathHeightCache.buildCachesAtIndexPathsIfNeeded(indexPaths)
@@ -169,9 +168,9 @@ extension UITableView {
                 })
             }
         }
-        fd_reloadRows(at :indexPaths, with: rowAnimation)
+        fd_reloadRows(at: indexPaths, with: rowAnimation)
     }
-    
+
     func fd_moveRow(at indexPath: IndexPath, to newIndexPath: IndexPath) {
         if fd_indexPathHeightCache.automaticallyInvalidateEnabled {
             fd_indexPathHeightCache.buildCachesAtIndexPathsIfNeeded([indexPath, newIndexPath])
@@ -183,7 +182,6 @@ extension UITableView {
                 sourceRows[indexPath.row] = destinationValue
                 destinationRows[newIndexPath.row] = sourceValue
             })
-            
         }
         fd_moveRow(at: indexPath, to: newIndexPath)
     }
@@ -199,7 +197,7 @@ extension Array {
             remove(at: i)
         }
     }
-    
+
     subscript(safe index: Int) -> Element {
         get {
             return self[index]
@@ -211,16 +209,16 @@ extension Array {
 }
 
 extension DispatchQueue {
-    
+
     private static var _onceTracker = [String]()
-    
+
     public class func once(token: String, block: () -> Void) {
         objc_sync_enter(self); defer { objc_sync_exit(self) }
-        
+
         if _onceTracker.contains(token) {
             return
         }
-        
+
         _onceTracker.append(token)
         block()
     }
