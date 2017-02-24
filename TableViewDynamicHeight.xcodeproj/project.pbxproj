@@ -27,6 +27,9 @@
 		D81E26271E602078006DD0C3 /* UITableView+FDIndexPathHeightCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81E26221E602078006DD0C3 /* UITableView+FDIndexPathHeightCache.swift */; };
 		D81E26281E602078006DD0C3 /* UITableView+FDTemplateLayoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81E26231E602078006DD0C3 /* UITableView+FDTemplateLayoutCell.swift */; };
 		D81E26291E602078006DD0C3 /* UITableView+FDTemplateLayoutCellDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81E26241E602078006DD0C3 /* UITableView+FDTemplateLayoutCellDebug.swift */; };
+		D81E26361E602445006DD0C3 /* UITableView-FDTemplateLayoutCell.swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81E262F1E602445006DD0C3 /* UITableView-FDTemplateLayoutCell.swift.framework */; };
+		D81E26371E602445006DD0C3 /* UITableView-FDTemplateLayoutCell.swift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D81E262F1E602445006DD0C3 /* UITableView-FDTemplateLayoutCell.swift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D81E263C1E602519006DD0C3 /* UITableView-FDTemplateLayoutCell.swift.h in Headers */ = {isa = PBXBuildFile; fileRef = D81E263B1E602519006DD0C3 /* UITableView-FDTemplateLayoutCell.swift.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D81CA8541E5C328F001DFBE3;
 			remoteInfo = TableViewDynamicHeight;
+		};
+		D81E26341E602445006DD0C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D81CA84D1E5C328F001DFBE3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D81E262E1E602445006DD0C3;
+			remoteInfo = "UITableView-FDTemplateLayoutCell.swift";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -47,6 +57,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D81E261E1E600CB3006DD0C3 /* GDPerformanceView.framework in Embed Frameworks */,
+				D81E26371E602445006DD0C3 /* UITableView-FDTemplateLayoutCell.swift.framework in Embed Frameworks */,
 				D81260631E5E89CD007E6E3E /* SwiftyJSON.framework in Embed Frameworks */,
 				D812605E1E5E82E7007E6E3E /* SnapKit.framework in Embed Frameworks */,
 			);
@@ -78,6 +89,9 @@
 		D81E26221E602078006DD0C3 /* UITableView+FDIndexPathHeightCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDIndexPathHeightCache.swift"; sourceTree = "<group>"; };
 		D81E26231E602078006DD0C3 /* UITableView+FDTemplateLayoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDTemplateLayoutCell.swift"; sourceTree = "<group>"; };
 		D81E26241E602078006DD0C3 /* UITableView+FDTemplateLayoutCellDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDTemplateLayoutCellDebug.swift"; sourceTree = "<group>"; };
+		D81E262F1E602445006DD0C3 /* UITableView-FDTemplateLayoutCell.swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "UITableView-FDTemplateLayoutCell.swift.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D81E26321E602445006DD0C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D81E263B1E602519006DD0C3 /* UITableView-FDTemplateLayoutCell.swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView-FDTemplateLayoutCell.swift.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,12 +100,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D812605D1E5E82E7007E6E3E /* SnapKit.framework in Frameworks */,
+				D81E26361E602445006DD0C3 /* UITableView-FDTemplateLayoutCell.swift.framework in Frameworks */,
 				D81260621E5E89CD007E6E3E /* SwiftyJSON.framework in Frameworks */,
 				D81E261D1E600CB3006DD0C3 /* GDPerformanceView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D81CA8661E5C328F001DFBE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D81E262B1E602445006DD0C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -116,6 +138,7 @@
 			children = (
 				D81CA8571E5C328F001DFBE3 /* TableViewDynamicHeight */,
 				D81CA86C1E5C328F001DFBE3 /* TableViewDynamicHeightUITests */,
+				D81E26301E602445006DD0C3 /* UITableView-FDTemplateLayoutCell.swift */,
 				D81CA8561E5C328F001DFBE3 /* Products */,
 				D812605A1E5E82E3007E6E3E /* Frameworks */,
 			);
@@ -126,6 +149,7 @@
 			children = (
 				D81CA8551E5C328F001DFBE3 /* TableViewDynamicHeight.app */,
 				D81CA8691E5C328F001DFBE3 /* TableViewDynamicHeightUITests.xctest */,
+				D81E262F1E602445006DD0C3 /* UITableView-FDTemplateLayoutCell.swift.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,7 +193,27 @@
 			path = Classes;
 			sourceTree = SOURCE_ROOT;
 		};
+		D81E26301E602445006DD0C3 /* UITableView-FDTemplateLayoutCell.swift */ = {
+			isa = PBXGroup;
+			children = (
+				D81E263B1E602519006DD0C3 /* UITableView-FDTemplateLayoutCell.swift.h */,
+				D81E26321E602445006DD0C3 /* Info.plist */,
+			);
+			path = "UITableView-FDTemplateLayoutCell.swift";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D81E262C1E602445006DD0C3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D81E263C1E602519006DD0C3 /* UITableView-FDTemplateLayoutCell.swift.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		D81CA8541E5C328F001DFBE3 /* TableViewDynamicHeight */ = {
@@ -184,6 +228,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D81E26351E602445006DD0C3 /* PBXTargetDependency */,
 			);
 			name = TableViewDynamicHeight;
 			productName = TableViewDynamicHeight;
@@ -208,6 +253,24 @@
 			productReference = D81CA8691E5C328F001DFBE3 /* TableViewDynamicHeightUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D81E262E1E602445006DD0C3 /* UITableView-FDTemplateLayoutCell.swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D81E263A1E602445006DD0C3 /* Build configuration list for PBXNativeTarget "UITableView-FDTemplateLayoutCell.swift" */;
+			buildPhases = (
+				D81E262A1E602445006DD0C3 /* Sources */,
+				D81E262B1E602445006DD0C3 /* Frameworks */,
+				D81E262C1E602445006DD0C3 /* Headers */,
+				D81E262D1E602445006DD0C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UITableView-FDTemplateLayoutCell.swift";
+			productName = "UITableView-FDTemplateLayoutCell.swift";
+			productReference = D81E262F1E602445006DD0C3 /* UITableView-FDTemplateLayoutCell.swift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -228,6 +291,11 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = D81CA8541E5C328F001DFBE3;
 					};
+					D81E262E1E602445006DD0C3 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 46A8679957;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = D81CA8501E5C328F001DFBE3 /* Build configuration list for PBXProject "TableViewDynamicHeight" */;
@@ -245,6 +313,7 @@
 			targets = (
 				D81CA8541E5C328F001DFBE3 /* TableViewDynamicHeight */,
 				D81CA8681E5C328F001DFBE3 /* TableViewDynamicHeightUITests */,
+				D81E262E1E602445006DD0C3 /* UITableView-FDTemplateLayoutCell.swift */,
 			);
 		};
 /* End PBXProject section */
@@ -262,6 +331,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D81CA8671E5C328F001DFBE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D81E262D1E602445006DD0C3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -295,6 +371,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D81E262A1E602445006DD0C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -302,6 +385,11 @@
 			isa = PBXTargetDependency;
 			target = D81CA8541E5C328F001DFBE3 /* TableViewDynamicHeight */;
 			targetProxy = D81CA86A1E5C328F001DFBE3 /* PBXContainerItemProxy */;
+		};
+		D81E26351E602445006DD0C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D81E262E1E602445006DD0C3 /* UITableView-FDTemplateLayoutCell.swift */;
+			targetProxy = D81E26341E602445006DD0C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -480,6 +568,52 @@
 			};
 			name = Release;
 		};
+		D81E26381E602445006DD0C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 46A8679957;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "UITableView-FDTemplateLayoutCell.swift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.huangboju.UITableView-FDTemplateLayoutCell-swift";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D81E26391E602445006DD0C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 46A8679957;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "UITableView-FDTemplateLayoutCell.swift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.huangboju.UITableView-FDTemplateLayoutCell-swift";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -509,6 +643,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D81E263A1E602445006DD0C3 /* Build configuration list for PBXNativeTarget "UITableView-FDTemplateLayoutCell.swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D81E26381E602445006DD0C3 /* Debug */,
+				D81E26391E602445006DD0C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
