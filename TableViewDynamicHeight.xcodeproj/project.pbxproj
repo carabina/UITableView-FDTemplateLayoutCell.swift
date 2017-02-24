@@ -20,13 +20,13 @@
 		D81CA8601E5C328F001DFBE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81CA85F1E5C328F001DFBE3 /* Assets.xcassets */; };
 		D81CA8631E5C328F001DFBE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D81CA8611E5C328F001DFBE3 /* LaunchScreen.storyboard */; };
 		D81CA86E1E5C328F001DFBE3 /* TableViewDynamicHeightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA86D1E5C328F001DFBE3 /* TableViewDynamicHeightUITests.swift */; };
-		D81CA87A1E5C32A2001DFBE3 /* FDIndexPathHeightCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA8791E5C32A2001DFBE3 /* FDIndexPathHeightCache.swift */; };
-		D81CA87D1E5C3CB0001DFBE3 /* UITableView+FDIndexPathHeightCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA87C1E5C3CB0001DFBE3 /* UITableView+FDIndexPathHeightCache.swift */; };
-		D81CA8B11E5D7828001DFBE3 /* UITableView+FDTemplateLayoutCellDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA8B01E5D7828001DFBE3 /* UITableView+FDTemplateLayoutCellDebug.swift */; };
-		D81CA8B31E5D7954001DFBE3 /* FDKeyedHeightCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA8B21E5D7954001DFBE3 /* FDKeyedHeightCache.swift */; };
-		D81CA8B51E5D7E80001DFBE3 /* UITableView+FDTemplateLayoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA8B41E5D7E80001DFBE3 /* UITableView+FDTemplateLayoutCell.swift */; };
 		D81E261D1E600CB3006DD0C3 /* GDPerformanceView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81E261B1E600CA2006DD0C3 /* GDPerformanceView.framework */; };
 		D81E261E1E600CB3006DD0C3 /* GDPerformanceView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D81E261B1E600CA2006DD0C3 /* GDPerformanceView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D81E26251E602078006DD0C3 /* FDIndexPathHeightCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81E26201E602078006DD0C3 /* FDIndexPathHeightCache.swift */; };
+		D81E26261E602078006DD0C3 /* FDKeyedHeightCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81E26211E602078006DD0C3 /* FDKeyedHeightCache.swift */; };
+		D81E26271E602078006DD0C3 /* UITableView+FDIndexPathHeightCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81E26221E602078006DD0C3 /* UITableView+FDIndexPathHeightCache.swift */; };
+		D81E26281E602078006DD0C3 /* UITableView+FDTemplateLayoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81E26231E602078006DD0C3 /* UITableView+FDTemplateLayoutCell.swift */; };
+		D81E26291E602078006DD0C3 /* UITableView+FDTemplateLayoutCellDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81E26241E602078006DD0C3 /* UITableView+FDTemplateLayoutCellDebug.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,13 +71,13 @@
 		D81CA8691E5C328F001DFBE3 /* TableViewDynamicHeightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TableViewDynamicHeightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81CA86D1E5C328F001DFBE3 /* TableViewDynamicHeightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDynamicHeightUITests.swift; sourceTree = "<group>"; };
 		D81CA86F1E5C328F001DFBE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D81CA8791E5C32A2001DFBE3 /* FDIndexPathHeightCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDIndexPathHeightCache.swift; sourceTree = "<group>"; };
 		D81CA87B1E5C3307001DFBE3 /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
-		D81CA87C1E5C3CB0001DFBE3 /* UITableView+FDIndexPathHeightCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDIndexPathHeightCache.swift"; sourceTree = "<group>"; };
-		D81CA8B01E5D7828001DFBE3 /* UITableView+FDTemplateLayoutCellDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDTemplateLayoutCellDebug.swift"; sourceTree = "<group>"; };
-		D81CA8B21E5D7954001DFBE3 /* FDKeyedHeightCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDKeyedHeightCache.swift; sourceTree = "<group>"; };
-		D81CA8B41E5D7E80001DFBE3 /* UITableView+FDTemplateLayoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDTemplateLayoutCell.swift"; sourceTree = "<group>"; };
 		D81E261B1E600CA2006DD0C3 /* GDPerformanceView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GDPerformanceView.framework; path = Carthage/Build/iOS/GDPerformanceView.framework; sourceTree = "<group>"; };
+		D81E26201E602078006DD0C3 /* FDIndexPathHeightCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDIndexPathHeightCache.swift; sourceTree = "<group>"; };
+		D81E26211E602078006DD0C3 /* FDKeyedHeightCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDKeyedHeightCache.swift; sourceTree = "<group>"; };
+		D81E26221E602078006DD0C3 /* UITableView+FDIndexPathHeightCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDIndexPathHeightCache.swift"; sourceTree = "<group>"; };
+		D81E26231E602078006DD0C3 /* UITableView+FDTemplateLayoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDTemplateLayoutCell.swift"; sourceTree = "<group>"; };
+		D81E26241E602078006DD0C3 /* UITableView+FDTemplateLayoutCellDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDTemplateLayoutCellDebug.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +133,7 @@
 		D81CA8571E5C328F001DFBE3 /* TableViewDynamicHeight */ = {
 			isa = PBXGroup;
 			children = (
-				D81CA8781E5C3293001DFBE3 /* Classes */,
+				D81E261F1E602078006DD0C3 /* Classes */,
 				D81CA8581E5C328F001DFBE3 /* AppDelegate.swift */,
 				D81CA85A1E5C328F001DFBE3 /* ViewController.swift */,
 				D81CA85C1E5C328F001DFBE3 /* Main.storyboard */,
@@ -157,17 +157,17 @@
 			path = TableViewDynamicHeightUITests;
 			sourceTree = "<group>";
 		};
-		D81CA8781E5C3293001DFBE3 /* Classes */ = {
+		D81E261F1E602078006DD0C3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D81CA8791E5C32A2001DFBE3 /* FDIndexPathHeightCache.swift */,
-				D81CA8B21E5D7954001DFBE3 /* FDKeyedHeightCache.swift */,
-				D81CA87C1E5C3CB0001DFBE3 /* UITableView+FDIndexPathHeightCache.swift */,
-				D81CA8B01E5D7828001DFBE3 /* UITableView+FDTemplateLayoutCellDebug.swift */,
-				D81CA8B41E5D7E80001DFBE3 /* UITableView+FDTemplateLayoutCell.swift */,
+				D81E26201E602078006DD0C3 /* FDIndexPathHeightCache.swift */,
+				D81E26211E602078006DD0C3 /* FDKeyedHeightCache.swift */,
+				D81E26221E602078006DD0C3 /* UITableView+FDIndexPathHeightCache.swift */,
+				D81E26231E602078006DD0C3 /* UITableView+FDTemplateLayoutCell.swift */,
+				D81E26241E602078006DD0C3 /* UITableView+FDTemplateLayoutCellDebug.swift */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -275,15 +275,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D81CA8B51E5D7E80001DFBE3 /* UITableView+FDTemplateLayoutCell.swift in Sources */,
+				D81E26271E602078006DD0C3 /* UITableView+FDIndexPathHeightCache.swift in Sources */,
+				D81E26281E602078006DD0C3 /* UITableView+FDTemplateLayoutCell.swift in Sources */,
 				D81260571E5E7C10007E6E3E /* FDFeedCell.swift in Sources */,
-				D81CA8B31E5D7954001DFBE3 /* FDKeyedHeightCache.swift in Sources */,
-				D81CA87A1E5C32A2001DFBE3 /* FDIndexPathHeightCache.swift in Sources */,
+				D81E26251E602078006DD0C3 /* FDIndexPathHeightCache.swift in Sources */,
 				D81CA85B1E5C328F001DFBE3 /* ViewController.swift in Sources */,
 				D81260591E5E7C30007E6E3E /* FDFeedEntity.swift in Sources */,
+				D81E26261E602078006DD0C3 /* FDKeyedHeightCache.swift in Sources */,
+				D81E26291E602078006DD0C3 /* UITableView+FDTemplateLayoutCellDebug.swift in Sources */,
 				D81CA8591E5C328F001DFBE3 /* AppDelegate.swift in Sources */,
-				D81CA87D1E5C3CB0001DFBE3 /* UITableView+FDIndexPathHeightCache.swift in Sources */,
-				D81CA8B11E5D7828001DFBE3 /* UITableView+FDTemplateLayoutCellDebug.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
