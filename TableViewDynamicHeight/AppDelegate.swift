@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 textLabel?.textColor = .white
                 textLabel?.layer.borderColor = UIColor.black.cgColor
             })
-        #endif  
+        #endif
         return true
     }
 
