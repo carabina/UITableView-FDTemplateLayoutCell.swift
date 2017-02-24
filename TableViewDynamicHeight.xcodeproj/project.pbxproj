@@ -25,6 +25,8 @@
 		D81CA8B11E5D7828001DFBE3 /* UITableView+FDTemplateLayoutCellDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA8B01E5D7828001DFBE3 /* UITableView+FDTemplateLayoutCellDebug.swift */; };
 		D81CA8B31E5D7954001DFBE3 /* FDKeyedHeightCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA8B21E5D7954001DFBE3 /* FDKeyedHeightCache.swift */; };
 		D81CA8B51E5D7E80001DFBE3 /* UITableView+FDTemplateLayoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA8B41E5D7E80001DFBE3 /* UITableView+FDTemplateLayoutCell.swift */; };
+		D81E261D1E600CB3006DD0C3 /* GDPerformanceView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81E261B1E600CA2006DD0C3 /* GDPerformanceView.framework */; };
+		D81E261E1E600CB3006DD0C3 /* GDPerformanceView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D81E261B1E600CA2006DD0C3 /* GDPerformanceView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D81E261E1E600CB3006DD0C3 /* GDPerformanceView.framework in Embed Frameworks */,
 				D81260631E5E89CD007E6E3E /* SwiftyJSON.framework in Embed Frameworks */,
 				D812605E1E5E82E7007E6E3E /* SnapKit.framework in Embed Frameworks */,
 			);
@@ -74,6 +77,7 @@
 		D81CA8B01E5D7828001DFBE3 /* UITableView+FDTemplateLayoutCellDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDTemplateLayoutCellDebug.swift"; sourceTree = "<group>"; };
 		D81CA8B21E5D7954001DFBE3 /* FDKeyedHeightCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDKeyedHeightCache.swift; sourceTree = "<group>"; };
 		D81CA8B41E5D7E80001DFBE3 /* UITableView+FDTemplateLayoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDTemplateLayoutCell.swift"; sourceTree = "<group>"; };
+		D81E261B1E600CA2006DD0C3 /* GDPerformanceView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GDPerformanceView.framework; path = Carthage/Build/iOS/GDPerformanceView.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 			files = (
 				D812605D1E5E82E7007E6E3E /* SnapKit.framework in Frameworks */,
 				D81260621E5E89CD007E6E3E /* SwiftyJSON.framework in Frameworks */,
+				D81E261D1E600CB3006DD0C3 /* GDPerformanceView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +104,7 @@
 		D812605A1E5E82E3007E6E3E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D81E261B1E600CA2006DD0C3 /* GDPerformanceView.framework */,
 				D81260601E5E89C9007E6E3E /* SwiftyJSON.framework */,
 				D812605B1E5E82E4007E6E3E /* SnapKit.framework */,
 			);

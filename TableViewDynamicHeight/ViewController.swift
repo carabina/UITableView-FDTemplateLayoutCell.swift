@@ -27,8 +27,26 @@ class ViewController: UITableViewController {
         return segmentConrol
     }()
 
+    private lazy var actionControl: UISegmentedControl = {
+        let actionControl = UISegmentedControl(items: ["insertRow", "insertSection", "deleteSection"])
+        actionControl.addTarget(self, action: #selector(performAction), for: .valueChanged)
+        actionControl.isMomentary = true
+        actionControl.center.x = self.view.center.x
+        actionControl.frame.origin.y = 8
+        return actionControl
+    }()
+
+    private lazy var toolBar: UIToolbar = {
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: self.tableView.frame.height - 44, width: self.tableView.frame.width, height: 44))
+        return toolBar
+    }()
+
     func selectedChange() {
         tableView.reloadData()
+    }
+    
+    func performAction() {
+        perform(Selector(actionControl.selectedTitle ?? ""), with: self)
     }
 
     override func viewDidLoad() {
@@ -42,6 +60,9 @@ class ViewController: UITableViewController {
             self.feedEntitySections.append(self.prototypeEntitiesFromJSON)
             self.tableView.reloadData()
         }
+
+        UIApplication.shared.keyWindow?.addSubview(toolBar)
+        toolBar.addSubview(actionControl)
     }
 
     func buildTestData(then: @escaping() -> ()) {
@@ -117,6 +138,33 @@ class ViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    var randomEntity: FDFeedEntity {
+        let randomNumber = Int(arc4random_uniform(UInt32(prototypeEntitiesFromJSON.count)))
+        let randomEntity = prototypeEntitiesFromJSON[randomNumber]
+        return randomEntity
+    }
+
+    func insertRow() {
+        if feedEntitySections.isEmpty {
+            insertSection()
+        } else {
+            feedEntitySections[0].insert(randomEntity, at: 0)
+            tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+        }
+    }
+
+    func insertSection() {
+        feedEntitySections.insert([randomEntity], at: 0)
+        tableView.insertSections(IndexSet(integer: 0), with: .automatic)
+    }
+
+    func deleteSection() {
+        if !feedEntitySections.isEmpty {
+            feedEntitySections.remove(at: 0)
+            tableView.deleteSections(IndexSet(integer: 0), with: .automatic)
+        }
     }
 
     override func didReceiveMemoryWarning() {
