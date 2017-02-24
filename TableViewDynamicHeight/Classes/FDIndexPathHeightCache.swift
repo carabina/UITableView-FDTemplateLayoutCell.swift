@@ -8,7 +8,6 @@
 
 typealias FDIndexPathHeightsBySection = [[CGFloat]]
 
-
 class FDIndexPathHeightCache {
 
     private lazy var heightsBySectionForPortrait: FDIndexPathHeightsBySection = []
@@ -27,25 +26,28 @@ class FDIndexPathHeightCache {
     }
     
     // Height cache
-    public func existsHeight(at indexPath: IndexPath) -> Bool {
+    func existsHeight(at indexPath: IndexPath) -> Bool {
         buildCachesAtIndexPathsIfNeeded([indexPath])
         let number = heightsBySectionForCurrentOrientation[indexPath.section][indexPath.row]
-        return !number.isEqual(to: -1)
+        return number != -1
     }
     
-    public func cache(height: CGFloat, by indexPath: IndexPath) {
+    func cache(height: CGFloat, by indexPath: IndexPath) {
         automaticallyInvalidateEnabled = true
         buildCachesAtIndexPathsIfNeeded([indexPath])
-        var arr = heightsBySectionForCurrentOrientation
-        arr[indexPath.section][indexPath.row] = height
+        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation){
+            heightsBySectionForPortrait[indexPath.section][indexPath.row] = height
+        } else {
+            heightsBySectionForLandscape[indexPath.section][indexPath.row] = height
+        }
     }
-    
-    public func height(for indexPath: IndexPath) -> CGFloat {
+
+    func height(for indexPath: IndexPath) -> CGFloat {
         buildCachesAtIndexPathsIfNeeded([indexPath])
         return heightsBySectionForCurrentOrientation[indexPath.section][indexPath.row]
     }
-    
-    public func invalidateHeight(at indexPath: IndexPath) {
+
+    func invalidateHeight(at indexPath: IndexPath) {
         buildCachesAtIndexPathsIfNeeded([indexPath])
         enumerateAllOrientations { (heightsBySection) in
             heightsBySection[indexPath.section][indexPath.row] = -1
@@ -60,12 +62,12 @@ class FDIndexPathHeightCache {
         }
     }
 
-    public func invalidateAllHeightCache() {
+    func invalidateAllHeightCache() {
         enumerateAllOrientations { (heightsBySection) in
             heightsBySection.removeAll()
         }
     }
-    
+
     func buildSectionsIfNeeded(_ targetSection: Int) {
         enumerateAllOrientations { (heightsBySection) in
             for section in 0...targetSection where section >= heightsBySection.count {
@@ -80,17 +82,6 @@ class FDIndexPathHeightCache {
             for row in 0...targetRow where row >= heightsByRow.count {
                 heightsBySection[safe: section][safe: row] = -1
             }
-        }
-    }
-}
-
-extension Array {
-    subscript(safe index: Int) -> Element {
-        get {
-            return self[index]
-        }
-        set(newElm) {
-            insert(newElm, at: index)
         }
     }
 }

@@ -23,7 +23,7 @@
 		D81CA87A1E5C32A2001DFBE3 /* FDIndexPathHeightCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA8791E5C32A2001DFBE3 /* FDIndexPathHeightCache.swift */; };
 		D81CA87D1E5C3CB0001DFBE3 /* UITableView+FDIndexPathHeightCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA87C1E5C3CB0001DFBE3 /* UITableView+FDIndexPathHeightCache.swift */; };
 		D81CA8B11E5D7828001DFBE3 /* UITableView+FDTemplateLayoutCellDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA8B01E5D7828001DFBE3 /* UITableView+FDTemplateLayoutCellDebug.swift */; };
-		D81CA8B31E5D7954001DFBE3 /* UITableView+FDKeyedHeightCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA8B21E5D7954001DFBE3 /* UITableView+FDKeyedHeightCache.swift */; };
+		D81CA8B31E5D7954001DFBE3 /* FDKeyedHeightCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA8B21E5D7954001DFBE3 /* FDKeyedHeightCache.swift */; };
 		D81CA8B51E5D7E80001DFBE3 /* UITableView+FDTemplateLayoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CA8B41E5D7E80001DFBE3 /* UITableView+FDTemplateLayoutCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +72,7 @@
 		D81CA87B1E5C3307001DFBE3 /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
 		D81CA87C1E5C3CB0001DFBE3 /* UITableView+FDIndexPathHeightCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDIndexPathHeightCache.swift"; sourceTree = "<group>"; };
 		D81CA8B01E5D7828001DFBE3 /* UITableView+FDTemplateLayoutCellDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDTemplateLayoutCellDebug.swift"; sourceTree = "<group>"; };
-		D81CA8B21E5D7954001DFBE3 /* UITableView+FDKeyedHeightCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDKeyedHeightCache.swift"; sourceTree = "<group>"; };
+		D81CA8B21E5D7954001DFBE3 /* FDKeyedHeightCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDKeyedHeightCache.swift; sourceTree = "<group>"; };
 		D81CA8B41E5D7E80001DFBE3 /* UITableView+FDTemplateLayoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FDTemplateLayoutCell.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,9 +155,9 @@
 			isa = PBXGroup;
 			children = (
 				D81CA8791E5C32A2001DFBE3 /* FDIndexPathHeightCache.swift */,
+				D81CA8B21E5D7954001DFBE3 /* FDKeyedHeightCache.swift */,
 				D81CA87C1E5C3CB0001DFBE3 /* UITableView+FDIndexPathHeightCache.swift */,
 				D81CA8B01E5D7828001DFBE3 /* UITableView+FDTemplateLayoutCellDebug.swift */,
-				D81CA8B21E5D7954001DFBE3 /* UITableView+FDKeyedHeightCache.swift */,
 				D81CA8B41E5D7E80001DFBE3 /* UITableView+FDTemplateLayoutCell.swift */,
 			);
 			path = Classes;
@@ -271,7 +271,7 @@
 			files = (
 				D81CA8B51E5D7E80001DFBE3 /* UITableView+FDTemplateLayoutCell.swift in Sources */,
 				D81260571E5E7C10007E6E3E /* FDFeedCell.swift in Sources */,
-				D81CA8B31E5D7954001DFBE3 /* UITableView+FDKeyedHeightCache.swift in Sources */,
+				D81CA8B31E5D7954001DFBE3 /* FDKeyedHeightCache.swift in Sources */,
 				D81CA87A1E5C32A2001DFBE3 /* FDIndexPathHeightCache.swift in Sources */,
 				D81CA85B1E5C328F001DFBE3 /* ViewController.swift in Sources */,
 				D81260591E5E7C30007E6E3E /* FDFeedEntity.swift in Sources */,

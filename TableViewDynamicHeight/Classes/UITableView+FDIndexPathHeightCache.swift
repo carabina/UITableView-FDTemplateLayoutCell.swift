@@ -7,8 +7,31 @@
 //
 
 extension UITableView {
+    
+    // MARK: - FDKeyedHeightCache and FDIndexPathHeightCache
+    
+    
+    private struct Keys {
+        static var keyedHeightCache = "keyedHeightCache"
+        static var indexPathHeightCache = "indexPathHeightCache"
+    }
+    
     var fd_indexPathHeightCache: FDIndexPathHeightCache {
-        return FDIndexPathHeightCache()
+        var cache = objc_getAssociatedObject(self, &Keys.indexPathHeightCache) as? FDIndexPathHeightCache
+        if cache == nil {
+            cache = FDIndexPathHeightCache()
+            objc_setAssociatedObject(self, &Keys.indexPathHeightCache, cache, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        return cache!
+    }
+    
+    var fd_keyedHeightCache: FDKeyedHeightCache {
+        var cache = objc_getAssociatedObject(self, &Keys.keyedHeightCache) as? FDKeyedHeightCache
+        if cache == nil {
+            cache = FDKeyedHeightCache()
+            objc_setAssociatedObject(self, &Keys.keyedHeightCache, cache, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        return cache!
     }
     
     //MARK: - FDIndexPathHeightCacheInvalidation
@@ -33,7 +56,7 @@ extension UITableView {
                 #selector(reloadRows(at:with:)),
                 #selector(moveRow(at:to:))
             ]
-
+            
             for selector in selectors {
                 let swizzledSelector = NSSelectorFromString("fd_" + selector.description)
                 let originalMethod = class_getInstanceMethod(self, selector)
@@ -52,7 +75,7 @@ extension UITableView {
         fd_reloadData()
         //    FDPrimaryCall([self fd_reloadData];)
     }
-
+    
     func fd_insertSections(_ sections: IndexSet, with rowAnimation: UITableViewRowAnimation) {
         if fd_indexPathHeightCache.automaticallyInvalidateEnabled {
             for  section in sections {
@@ -174,6 +197,15 @@ extension Array {
     public mutating func remove(at indexes: IndexSet) {
         for i in indexes.reversed() {
             remove(at: i)
+        }
+    }
+    
+    subscript(safe index: Int) -> Element {
+        get {
+            return self[index]
+        }
+        set(newElm) {
+            insert(newElm, at: index)
         }
     }
 }

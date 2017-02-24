@@ -45,13 +45,3 @@ class FDKeyedHeightCache {
         mutableHeightsByKeyForLandscape.removeAll(keepingCapacity: true)
     }
 }
-
-
-
-// MARK: - FDKeyedHeightCache
-
-extension UITableView {
-    var fd_keyedHeightCache: FDKeyedHeightCache {
-        return FDKeyedHeightCache()
-    }
-}
